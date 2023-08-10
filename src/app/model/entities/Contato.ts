@@ -1,12 +1,12 @@
 export class Contato{
     private _nome : string;
     private _telefone : number;
-    private _email : string;
+    private _email !: string;
+    private _genero !: number;
 
- constructor(nome:string , telefone:number, email: string){
+ constructor(nome:string , telefone:number){
     this._nome =nome;
     this._telefone = telefone;
-    this._email =email;
  }
 
  public get nome() :string {
@@ -30,5 +30,11 @@ export class Contato{
  }
  public set email(email: string) {
     this._email=email;
+ }
+ public get genero() : number {
+   return this._genero;
+ }
+ public set genero(genero: number ){
+   this._genero = genero;
  }
 }

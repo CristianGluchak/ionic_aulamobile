@@ -12,16 +12,18 @@ export class HomePage {
   public nome! :string;
   public telefone! : number;
   public email! : string;
+  public genero!: number;
 
   public listaDeContatos: Contato[] = [];
 
 
 
 constructor(private alertController: AlertController){
-  let c1: Contato = new Contato("Cristian Gluchak",10144212927,"email@mail.com");
-  let c2: Contato = new Contato("Jotair", 10144212900,"email@mail.com");
-  let c3: Contato = new Contato("Matheus Souto", 10144212900,"email@mail.com");
-  let c4: Contato = new Contato("Antonio Zampier", 10144212900,"email@mail.com" );
+  let c1: Contato = new Contato("Cristian Gluchak",10144212927);
+  c1.email ="email@mail.com";
+  let c2: Contato = new Contato("Jotair", 10144212900);
+  let c3: Contato = new Contato("Matheus Souto", 10144212900);
+  let c4: Contato = new Contato("Antonio Zampier", 10144212900);
   this.listaDeContatos.push(c1);
   this.listaDeContatos.push(c2);
   this.listaDeContatos.push(c3);
@@ -38,7 +40,11 @@ constructor(private alertController: AlertController){
     if ( verificaNome != null && this.telefone!= null){
       if (verificaNome.length > 3 )
           if (verificaTelefone.length > 8){
-            let novo : Contato = new Contato(this.nome,this.telefone,this.email)
+            let novo : Contato = new Contato(this.nome,this.telefone)
+            if(this.email){
+              novo.email = this.email;
+            }
+            novo.genero= this.genero;
             this.listaDeContatos.push(novo)
           }else{
             this.presentAlert("Erros ao cadastrar!","campo nome nao pode conter menos que 8 caracteres")
